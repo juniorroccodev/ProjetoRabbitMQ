@@ -27,10 +27,15 @@ public class CalcController {
     private final Producer producer;
 
 
-    @GetMapping ("/{id}")
-    public ResponseEntity<ResponseCalcDTO> getCalc(@PathVariable (value = "id") Long id) {
+    @GetMapping (value = "/{id}")
+    public ResponseEntity<Calc> findById(@PathVariable (value = "id") Long id) {
         Calc calc = calcService.findById(id);
-        if (calc.getStatus().equals(Status.PROCESSADO)){
+        return ResponseEntity.ok().body(calc);
+    }
+
+    /*public ResponseEntity<ResponseCalcDTO> getCalc(@PathVariable (value = "id") Long id) {
+        Calc calc = calcService.findById(id);
+        if (calc.getStatus().equals(Status.PROCESSADO)){}
             CalcResultado resultado = calcResultadoService.findByResultado(calc.getNumero1() + calc.getNumero2());
             return ResponseEntity.ok(ResponseCalcDTO.builder()
                     .numero1(calc.getNumero1())
@@ -45,7 +50,7 @@ public class CalcController {
                     .status(calc.getStatus())
                     .build());
         }
-    }
+    }*/
 
     @GetMapping(value = "/")
     public ResponseEntity<List<ResponseCalcDTO>> listarTodos(){

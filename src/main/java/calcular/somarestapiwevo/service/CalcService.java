@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Service
@@ -16,9 +17,14 @@ public class CalcService {
     @Autowired
     private final CalcRepository calcRepository;
 
-    @Transactional (readOnly = true)
+    /*@Transactional (readOnly = true)
     public Calc findById(Long id) {
         return calcRepository.findById(id).get();
+    }*/
+    @Transactional(readOnly = true)
+    public Calc findById(Long id) {
+        Optional<Calc> calc = calcRepository.findById(id);
+        return calc.orElse(null);
     }
 
     @Transactional (readOnly = true)
