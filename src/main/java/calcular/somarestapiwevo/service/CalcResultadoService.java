@@ -1,12 +1,9 @@
 package calcular.somarestapiwevo.service;
 
-import calcular.somarestapiwevo.models.Calc;
 import calcular.somarestapiwevo.models.CalcResultado;
-import calcular.somarestapiwevo.repository.CalcRepository;
 import calcular.somarestapiwevo.repository.CalcResultadoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
